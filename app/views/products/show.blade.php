@@ -1,7 +1,3 @@
-@extends('shared.layout')
-
-@section('form')
-
 <div class="row marketing">
 	<h3>Product</h3>
 			
@@ -17,4 +13,3 @@
 			{{Form::label('salesman_id', 'Salesman')}} : {{$salesman->name.' '.$salesman->lastname}}
 		</div>		
 </div>
-@stop

@@ -2,7 +2,9 @@
 
 @section('content')
 	
-	@yield('content_inner')
+	<div>
+		{{$content_inner}}
+	</div>	
 	
 	<h3>Products</h3>
 	<div class="list-group">
