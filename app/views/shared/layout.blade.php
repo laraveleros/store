@@ -14,7 +14,7 @@
 				<ul class="nav nav-pills pull-right">
 					<li>{{HTML::link('/', 'Initial')}}</li>
 					<li>{{HTML::link('salesman', 'Salesmans')}}</li>
-					<li>{{HTML::link('product', 'Products')}}</li>					
+					<li>{{HTML::link('products', 'Products')}}</li>					
 				</ul>
 				
 				<h3 class="text-muted">Store</h3>				

@@ -17,11 +17,16 @@ Route::get('salesman', 'SalesmanController@showSalesmans');
  
 Route::post('salesman', 'SalesmanController@createSalesman');
  
-Route::get('product', 'ProductController@showProducts');
+Route::get('products', 'ProductsController@showProducts');
  
-Route::post('product', 'ProductController@createProduct');
+Route::post('products', 'ProductsController@createProduct');
 
 Route::get("salesman/{id}", [
 "as"   => "salesman.show",
 "uses" => "SalesmanController@show"
+]);
+
+Route::get("products/{id}", [
+"as"   => "products.show",
+"uses" => "ProductsController@show"
 ]);

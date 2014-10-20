@@ -1,6 +1,6 @@
 @extends('shared.layout')
 
-@section('content')
+@section('form')
 <div class="row marketing">
 	<h3>Create Product</h3>
 	
@@ -52,11 +52,5 @@
 		{{Form::reset('Reset', array('class' => 'btn btn-default'))}}
 		
 	{{ Form::close() }}
-</div>
-<h3>Products</h3>
-<div class="list-group">
-	@foreach($products as $product)
-		<a href="#" class="list-group-item">{{$product->name.' '.$product->lastname }}</a>
-	@endforeach
 </div>
 @stop
