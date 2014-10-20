@@ -1,6 +1,4 @@
-@extends('shared.layout')
 
-@section('form')
 
 <div class="row marketing">
 	<h3>Salesman</h3>
@@ -17,9 +15,3 @@
 		</div>			
 		
 </div>
-@stop
-
-
-@section('form')
-	@include('salesman.list')
-@stop

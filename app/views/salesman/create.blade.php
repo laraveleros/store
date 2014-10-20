@@ -1,7 +1,3 @@
-@extends('shared.layout')
-
-@section('form')
-
 <div class="row marketing">
 	<h3>Create Salesman</h3>
 	
@@ -38,4 +34,3 @@
 		
 	{{ Form::close() }}
 </div>
-@stop

@@ -4,7 +4,7 @@ class SalesmanController extends BaseController {
 	public function showSalesmans(){
 		$salesmans = Salesman::all();
 		// obtenemos todos los salesmans y los pasamos a la vista
-		return View::make('salesman.list', array('salesmans' => $salesmans));
+		return View::make('salesman.index', array('salesmans' => $salesmans));
 	}
 
 	public function createSalesman(){
@@ -24,10 +24,22 @@ class SalesmanController extends BaseController {
 	
 
 	public function show($id){	
-		$salesmans = Salesman::all();
-		$salesman = $salesmans->find($id);
 		
-		// obtenemos todos los salesmans y los pasamos a la vista
-		return View::make('salesman.show', array('salesmans' => $salesmans, 'salesman' => $salesman));
+		if(!Request::ajax()){
+			$salesmans = Salesman::all();
+			$salesman = $salesmans->find($id);
+			// obtenemos todos los salesmans y los pasamos a la vista
+			return View::make('salesman.show', array('salesmans' => $salesmans, 'salesman' => $salesman));
+		}
+		else
+		{
+			$salesman = Salesman::find($id);
+			return View::make('salesman.show',array('salesman' => $salesman));
+		}
+	}
+	
+
+	public function create(){	
+		return View::make('salesman.create');
 	}
 }

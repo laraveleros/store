@@ -24,6 +24,10 @@ Route::post('products', 'ProductsController@createProduct');
 Route::get("salesman/{id}", [
 "as"   => "salesman.show",
 "uses" => "SalesmanController@show"
+])->where('id', '[0-9]+');
+Route::get("salesman/create", [
+"as"   => "salesman.create",
+"uses" => "SalesmanController@create"
 ]);
 
 Route::get("products/{id}", [
