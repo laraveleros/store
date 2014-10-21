@@ -16,10 +16,6 @@ Route::get('/', function()
 Route::get('salesman', 'SalesmanController@showSalesmans');
  
 Route::post('salesman', 'SalesmanController@createSalesman');
- 
-Route::get('products', 'ProductsController@showProducts');
- 
-Route::post('products', 'ProductsController@createProduct');
 
 Route::get("salesman/{id}", [
 "as"   => "salesman.show",
@@ -29,8 +25,22 @@ Route::get("salesman/create", [
 "as"   => "salesman.create",
 "uses" => "SalesmanController@create"
 ]);
+ 
+Route::get('products', 'ProductsController@index');
+ 
+Route::post('products', 'ProductsController@createProduct');
 
 Route::get("products/{id}", [
-"as"   => "products.show",
-"uses" => "ProductsController@show"
+	"as"   => "products.show",
+	"uses" => "ProductsController@show"
+]);
+
+Route::get("products/{product}/edit", [
+	"as"   => "products.edit",
+	"uses" => "ProductsController@edit"
+]);
+
+Route::post('/products/{product}/update', [
+	'as' => 'products.update', 
+	'uses' => 'ProductsController@updateProduct'
 ]);

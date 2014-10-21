@@ -1,16 +1,13 @@
-@extends('shared.layout')
-
-@section('form')
 <div class="row marketing">
-	<h3>Create Product</h3>
+	<h3>Edit Product</h3>
 	
-	{{ Form::open(array('url' => 'product')) }}
+	{{ Form::open(['route'=>['products.update', $product->id]]) }}
 		@if (Session::get('message'))
 			<div class="alter alter-success">{{Session::get('message')}}</div>			
 		@endif
 		<div class="form-group">
 			{{Form::label('description', 'Description')}}
-			{{Form::text('description', Input::old('description'), array('class'=>'form-control', 'placeholder' => 'product description', 'autocomplete'=>'off'))}}
+			{{Form::text('description', Input::old('description', $product->description), array('class'=>'form-control', 'placeholder' => 'product description', 'autocomplete'=>'off'))}}
 		</div>
 			@if( $errors->has('description') )
 				<div class="alert alert-danger">
@@ -22,7 +19,7 @@
 			
 		<div class="form-group">
 			{{Form::label('price', 'Price')}}
-			{{Form::text('price', Input::old('price'), array('class'=>'form-control', 'placeholder' => 'product price', 'autocomplete'=>'off'))}}
+			{{Form::text('price', Input::old('price', $product->price), array('class'=>'form-control', 'placeholder' => 'product price', 'autocomplete'=>'off'))}}
 		</div>
 			@if( $errors->has('price') )
 				<div class="alert alert-danger">
@@ -33,10 +30,15 @@
 			@endif
 			
 		<div class="form-group">
-			{{Form::label('salesman_id', 'Salesman')}}
+			{{Form::label('salesman_id', 'Salesman')}}			
 			<select class="form-control" name="salesman_id">
 				@foreach($salesmans as $salesman)
-					<option value="{{$salesman->id}}">{{$salesman->name.' '.$salesman->lastname}}</option>
+					@if($salesman->id === $product->salesman_id)
+						<option value="{{$salesman->id}}" selected >{{$salesman->name.' '.$salesman->lastname}} </option>					
+					@else
+						<option value="{{$salesman->id}}">{{$salesman->name.' '.$salesman->lastname}} </option>
+					@endif
+					
 				@endforeach
 			</select>			
 		</div>
@@ -48,9 +50,8 @@
 				</div>				
 			@endif
 			
-		{{Form::submit('Save', array('class' => 'btn btn-success'))}}			
-		{{Form::reset('Reset', array('class' => 'btn btn-default'))}}
+		{{Form::submit('Update', array('class' => 'btn btn-success'))}}			
+		{{ HTML::linkRoute('products.show', 'Cancel', $product->id, array('class' => 'btn')) }}
 		
 	{{ Form::close() }}
 </div>
-@stop
